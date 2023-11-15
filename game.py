@@ -65,7 +65,7 @@ while True:
 
     # Draw the score to the screen
 
-    score_text = font.render(f"{name}", True,  color)
+    score_text = font.render(f"{''.join(name)}", True,  color)
 
     
     screen.blit(score_text, (250 - 36, 250 - 36))
