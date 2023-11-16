@@ -1,5 +1,6 @@
 import pygame
 import sys
+import os
 
 alphabet = [
   'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 
@@ -18,7 +19,7 @@ info = pygame.display.Info()
 monitor_size = [pygame.display.Info().current_w, pygame.display.Info().current_h]
 
 screen = pygame.display.set_mode((monitor_size), pygame.RESIZABLE)
-font = pygame.font.Font('retro.ttf', 124)
+font = pygame.font.Font("./retro_teste.ttf", 124)
 clock = pygame.time.Clock()
 
 
@@ -31,11 +32,6 @@ colors = [
    (240, 253, 244)
 ]
 
-blinking_letter_positions = [
-   ((monitor_size[0] // 2) - 144, (monitor_size[1] // 2) - 79),
-   (250 + (2 * 36) - 12, 250 - 36),
-   (250 + (5 * 36) - 24, 250 - 36),
-]
 
 blink_interval = 500 
 last_blink_time = pygame.time.get_ticks()
@@ -79,6 +75,12 @@ while True:
     score_text = font.render(f"{''.join(name)}", True,  (240, 253, 244))
     text_rect = score_text.get_rect(center=(monitor_size[0] // 2, monitor_size[1] // 2))
 
+    blinking_letter_positions = [
+#         768             432
+    ((text_rect[0]) , (text_rect[1]) ),
+    ((text_rect[0]) + 96 , (text_rect[1]) ),
+    ((text_rect[0]) + (96 * 2), (text_rect[1]) )
+]
 
     screen.blit(score_text, text_rect)
     screen.blit(score_text_blinking, blinking_letter_positions[position])
